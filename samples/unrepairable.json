@@ -1,0 +1,21 @@
+{
+  "fields": ["hidden", "vis"],
+  "derived_facts": {},
+  "legal": true,
+  "rules": [
+    {"when": "hidden", "code": 403}
+  ],
+  "default_code": 200,
+  "receivers": [
+    {
+      "name": "guest",
+      "visible_fields": ["vis"],
+      "derived_facts": []
+    }
+  ],
+  "repair": {
+    "merge_costs": {
+      "403": 5
+    }
+  }
+}

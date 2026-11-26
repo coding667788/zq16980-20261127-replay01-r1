@@ -1,0 +1,34 @@
+{
+  "fields": ["a", "b", "c"],
+  "derived_facts": {
+    "either": {"or": ["a", "b"]}
+  },
+  "legal": {"and": ["c", {"imp": ["a", "b"]}]},
+  "rules": [
+    {"when": "a", "code": 201},
+    {"when": "either", "code": 202},
+    {"when": {"not": "c"}, "code": 500}
+  ],
+  "default_code": 0,
+  "receivers": [
+    {
+      "name": "ops",
+      "visible_fields": ["c"],
+      "derived_facts": []
+    },
+    {
+      "name": "trusted",
+      "visible_fields": ["a", "b", "c"],
+      "derived_facts": ["either"]
+    }
+  ],
+  "repair": {
+    "merge_costs": {
+      "0": 1,
+      "201": 3,
+      "202": 4,
+      "500": 2
+    },
+    "default_code_optional": true
+  }
+}

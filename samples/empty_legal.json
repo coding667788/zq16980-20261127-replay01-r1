@@ -1,0 +1,19 @@
+{
+  "fields": ["p", "q"],
+  "derived_facts": {},
+  "legal": {"and": ["p", {"not": "p"}]},
+  "rules": [
+    {"when": "q", "code": 1}
+  ],
+  "default_code": 0,
+  "receivers": [
+    {
+      "name": "anyone",
+      "visible_fields": [],
+      "derived_facts": []
+    }
+  ],
+  "repair": {
+    "merge_costs": {"0": 1, "1": 1}
+  }
+}

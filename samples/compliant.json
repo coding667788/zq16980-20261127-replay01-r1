@@ -1,0 +1,26 @@
+{
+  "fields": ["x", "y"],
+  "derived_facts": {
+    "xy": {"and": ["x", "y"]}
+  },
+  "legal": true,
+  "rules": [
+    {"when": "xy", "code": "HIT"},
+    {"when": {"xor": ["x", "y"]}, "code": "MIX"}
+  ],
+  "default_code": "NONE",
+  "receivers": [
+    {
+      "name": "full",
+      "visible_fields": ["x", "y"],
+      "derived_facts": ["xy"]
+    }
+  ],
+  "repair": {
+    "merge_costs": {
+      "\"HIT\"": 5,
+      "\"MIX\"": 5,
+      "\"NONE\"": 5
+    }
+  }
+}

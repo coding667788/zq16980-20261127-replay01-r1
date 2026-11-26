@@ -1,0 +1,25 @@
+{
+  "fields": ["s", "t"],
+  "derived_facts": {},
+  "legal": true,
+  "rules": [
+    {"when": "t", "code": 10}
+  ],
+  "default_code": 20,
+  "receivers": [
+    {
+      "name": "sees-t",
+      "visible_fields": ["t"],
+      "derived_facts": []
+    },
+    {
+      "name": "sees-nothing",
+      "visible_fields": [],
+      "derived_facts": []
+    }
+  ],
+  "repair": {
+    "merge_costs": {"10": 1, "20": 1},
+    "default_code_optional": true
+  }
+}

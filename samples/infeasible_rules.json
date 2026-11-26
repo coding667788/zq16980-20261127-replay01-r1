@@ -1,0 +1,26 @@
+{
+  "fields": ["secret", "shown"],
+  "derived_facts": {
+    "flag": {"or": ["secret", {"not": "shown"}]}
+  },
+  "legal": true,
+  "rules": [
+    {"when": {"and": ["secret", {"not": "secret"}]}, "code": 999},
+    {"when": {"and": ["shown", {"not": "shown"}]}, "code": 998},
+    {"when": "flag", "code": 700}
+  ],
+  "default_code": 0,
+  "receivers": [
+    {
+      "name": "public",
+      "visible_fields": ["shown"],
+      "derived_facts": []
+    }
+  ],
+  "repair": {
+    "merge_costs": {
+      "700": 2,
+      "0": 3
+    }
+  }
+}
